@@ -16,6 +16,7 @@ a sus propios WeakMaps.
 */
 //OBJETOS SIMULADOS PERMANENTES
 var miarregloTareas = new arregloTareas();
+var miresponsable;
 var roladmistrador = new rol('admistrador');
 var roldirector = new rol('director');
 var rolconsultor = new rol('consultor');
@@ -116,15 +117,11 @@ let tarea = (function() {
 let responsable = (function() {
     let privnombre = new WeakMap();
     let privrol = new WeakMap();
-    let privtelefono = new WeakMap();
-    let privdireccion = new WeakMap();
 
     class responsable{
         constructor(nombre,rol,telefono,direccion) {
             privnombre.set(this, nombre);
             privnrol.set(this, rol);
-            privtelefono.set(this, telefono);
-            privdireccion.set(this, direccion);
         }
         
         //METODOS SETS Y GETS
@@ -137,28 +134,12 @@ let responsable = (function() {
             return privrol.get(this);
         }
 
-        getTelefono(){
-            return privtelefono.get(this);
-        }
-
-        getDireccion(){
-            return privdireccion.get(this);
-        }
-
         setNombre(valor){
             privnombre.set(this,valor);
         }
 
         setRol(valor){
             privrol.set(this,valor);
-        }
-
-        setTelefono(valor){
-            privtelefono.set(this,valor);
-        }
-
-        setDireccion(valor){
-            privdireccion.set(this,valor);
         }
 
     }
@@ -215,5 +196,7 @@ function inicializarTarea(){
     let fechainicio = document.getElementById('').value;
     let fechatermino = document.getElementById('').value;
     let nombretarea = document.getElementById('').value;
+    let rol = document.getElementById('').value;
+    miresponsable = new responsable(rol);
     let nuevatarea = new tarea();
 }
