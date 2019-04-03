@@ -2,7 +2,7 @@
 function load(){
 var l = new Loader();
             l.require([
-                "js/gantt/tarea.js",
+                "scripts/clases.js",
                 "js/gantt/test.js"], 
                 function() {
                     // Callback
@@ -19,7 +19,6 @@ Loader.prototype = {
 
         for (var i = 0; i < scripts.length; i++) {
             this.writeScript(scripts[i]);
-            alert('-->'+scripts[i]);
         }
     },
     loaded: function (evt) {

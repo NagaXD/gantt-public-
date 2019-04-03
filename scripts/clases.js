@@ -33,9 +33,53 @@ let tarea = (function() {
             privavance.set(this, avance);
         }
 
-    //METODOS
+    //METODOS SET Y GETS
     getPadre(){
         return privpadre.get(this);
+    }
+
+    getFechainicio(){
+        return privfechainicio.get(this);
+    }
+
+    getFechatermino(){
+        return privfechatermino.get(this);
+    }
+
+    getNombre(){
+        return privnombre.get(this);
+    }
+
+    getTipo(){
+        return privtipo.get(this);
+    }
+
+    getAvance(){
+        return privavance.get(this);
+    }
+
+    setPadre(valor){
+        privpadre.set(this,valor);
+    }
+
+    setFechainicio(valor){
+        privfechainicio.set(this,valor);
+    }
+
+    setFechatermino(valor){
+        privfechatermino.set(this,valor);
+    }
+
+    setNombre(valor){
+        privnombre.set(this,valor);
+    }
+
+    setTipo(valor){
+        privtipo.set(this,valor);
+    }
+
+    setAvance(valor){
+        privavance.set(this,valor);
     }
 
     }
@@ -47,12 +91,32 @@ let responsable = (function() {
     let nombre = new WeakMap();
     let rol = new WeakMap();
 
-    class tarea {
+    class responsable{
         constructor(nombre,rol) {
             privnombre.set(this, nombre);
             privnrol.set(this, rol);
         }
+        
+        //METODOS SETS Y GETS
+
+        getNombre(){
+            return privnombre.get(this);
+        }
+
+        getRol(){
+            return privrol.get(this);
+        }
+
+        setNombre(valor){
+            privnombre.set(this,valor);
+        }
+
+        setRol(valor){
+            privrol.set(this,valor);
+        }
+
     }
+
     return responsable;
 })();
 
@@ -61,19 +125,21 @@ let rol = (function() {
 
     class tarea {
         constructor(rol) {
-
             privnombre.set(this, nombre);
-
-            this.getNombre = function() {
-                return privnombre.get(this);
-            };
-
         }
+    getNombre(){
+            return privnombre.get(this);
+        }
+
+    setNombre(valor){
+            privnombre.set(this,valor);
     }
 
+    }
+    return rol;
 })();
 
 
 function main(){
-    
+    console.log('hola');
 }
