@@ -151,7 +151,7 @@ let rol = (function() {
     let nombre = new WeakMap();
 
     class rol{
-        constructor(rol) {
+        constructor(rol){
             privnombre.set(this, nombre);
         }
     getNombre(){
@@ -190,13 +190,14 @@ let arregloTareas = (function() {
     return arregloTareas;
 })();
 
-function inicializarTarea(){
+function inicializarTarea(SelectId){
     let nombre = document.getElementById('').value;
     let id = miarregloTareas.obtenerNumElementos()+1;
     let fechainicio = document.getElementById('').value;
     let fechatermino = document.getElementById('').value;
     let nombretarea = document.getElementById('').value;
     let rol = document.getElementById('').value;
+    let tipo = document.getElementById('').value;
     miresponsable = new responsable(rol);
-    let nuevatarea = new tarea();
+    let nuevatarea = new tarea(miarregloTareas.getarregloTareas(SelectId),id,fechainicio,fechatermino,nombre,tipo,avance,miresponsable);
 }
