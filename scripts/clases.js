@@ -16,12 +16,12 @@ a sus propios WeakMaps.
 */
 
 let tarea = (function() {
-    const privpadre = new WeakMap();
-    const privfechainicio = new WeakMap();
-    const privfechatermino = new WeakMap();
-    const privnombre = new WeakMap();
-    const privtipo = new WeakMap();
-    const privavance = new WeakMap();
+    let privpadre = new WeakMap();
+    let privfechainicio = new WeakMap();
+    let privfechatermino = new WeakMap();
+    let privnombre = new WeakMap();
+    let privtipo = new WeakMap();
+    let privavance = new WeakMap();
 
     class tarea {
         constructor(padre, fechainicio,fechatermino,nombre,tipo,avance) {
@@ -31,83 +31,33 @@ let tarea = (function() {
             privnombre.set(this, nombre);
             privtipo.set(this, tipo);
             privavance.set(this, avance);
-
-            this.getTiempoRestante = function() {
-                return privfechatermino.get(this) - privfechainicio..get(this);
-            };
-
-            this.agregarTarea = function() {
-                
-            };
-
-            this.dibujarTarea = function() {
-                    
-            };
-
-            this.ocultarHijos = function() {
-                
-            };
-
-            this.eliminarTarea = function() {
-                
-            }; 
-
-            this.agregarResponsable = function() {
-                
-            };
-            
-            this.modificarAvance = function(valor) {
-                privavance.set(this, valor);
-            };       
-
-            this.asignarPadre = function(valor) {
-                privavance.set(this,valor);
-            };
-            this.obtenerPadre = function() {
-                return privpadre.get(this);
-            };
         }
+
+    //METODOS
+    getPadre(){
+        return privpadre.get(this);
     }
 
+    }
 
+    return tarea;
 })();
 
 let responsable = (function() {
-    const nombre = new WeakMap();
-    const rol = new WeakMap();
+    let nombre = new WeakMap();
+    let rol = new WeakMap();
 
     class tarea {
         constructor(nombre,rol) {
-
             privnombre.set(this, nombre);
             privnrol.set(this, rol);
-
-            this.getNombre = function() {
-                return privnombre.get(this);
-            };
-
-            this.getRol = function() {
-                return privrol.get(this);
-            };
-
-            this.setNombre = function(valor) {
-                privnombre.set(this, valor);
-            };
-
-            this.setRol = function(valor) {
-                privnrol.set(this, valor);
-            };
-
-            this.asignarRol = function() {
-                
-            };
         }
     }
-
+    return responsable;
 })();
 
 let rol = (function() {
-    const nombre = new WeakMap();
+    let nombre = new WeakMap();
 
     class tarea {
         constructor(rol) {
@@ -122,3 +72,8 @@ let rol = (function() {
     }
 
 })();
+
+
+function main(){
+    
+}
