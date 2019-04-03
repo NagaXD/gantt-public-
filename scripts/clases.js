@@ -123,7 +123,7 @@ let responsable = (function() {
 let rol = (function() {
     let nombre = new WeakMap();
 
-    class tarea {
+    class rol{
         constructor(rol) {
             privnombre.set(this, nombre);
         }
@@ -139,7 +139,36 @@ let rol = (function() {
     return rol;
 })();
 
+let arregloTareas = (function() {
+    let privarreglodeTareas = new Array();
+    
+    class arregloTareas {
+        constructor(tarea) {
+          let objetoTarea = new WeakMap();
+          objetoTarea.set(this,tarea);
+          privarreglodeTareas.push(objetoTarea);  
+        }
+    getarregloTareas(i){
+            return privarreglodeTareas[i].get(this,tarea);
+        }
+
+    setarregloTareas(valor){
+        let objetoTarea = new WeakMap();
+        objetoTarea.set(this,valor); 
+        privarreglodeTareas.push(objetoTarea);  
+    }
+
+    }
+    return arregloTareas;
+})();
+
 
 function main(){
-    console.log('hola');
+    let unatarea = new tarea('hola','hola','hola','hola','hola','hola');
+    let dostarea = new tarea('hola2','hola2','hola2','hola2','hola2','hola2');
+    let miarreglo = new arregloTareas(unatarea);
+    miarreglo.setarregloTareas(dostarea);
+    
+    console.log(miarreglo.getarregloTareas(0).getNombre());
+    console.log(miarreglo.getarregloTareas(1).getNombre());
 }
