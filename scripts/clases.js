@@ -14,6 +14,12 @@ variables de ámbito porque todas las instancias pueden compartir un único Weak
 por lo que no es necesario que vuelva a crear métodos solo para hacer que accedan 
 a sus propios WeakMaps.
 */
+//OBJETOS SIMULADOS PERMANENTES
+var miarregloTareas = new arregloTareas();
+var roladmistrador = new rol('admistrador');
+var roldirector = new rol('director');
+var rolconsultor = new rol('consultor');
+var rolanalista = new rol('analista');
 
 let tarea = (function() {
     let privpadre = new WeakMap();
@@ -22,20 +28,28 @@ let tarea = (function() {
     let privnombre = new WeakMap();
     let privtipo = new WeakMap();
     let privavance = new WeakMap();
+    let privid = new WeakMap();
+    let privresponsable = new WeakMap();
 
     class tarea {
-        constructor(padre, fechainicio,fechatermino,nombre,tipo,avance) {
+        constructor(padre,id,fechainicio,fechatermino,nombre,tipo,avance,responsable) {
             privpadre.set(this, padre);
+            privid.set(this,id);
             privfechainicio.set(this, fechainicio);
             privfechatermino.set(this, fechatermino);
             privnombre.set(this, nombre);
             privtipo.set(this, tipo);
             privavance.set(this, avance);
+            privresponsable.set(this,responsable);
         }
 
     //METODOS SET Y GETS
     getPadre(){
         return privpadre.get(this);
+    }
+
+    getId(){
+        return privid.get(this);
     }
 
     getFechainicio(){
@@ -58,8 +72,16 @@ let tarea = (function() {
         return privavance.get(this);
     }
 
+    getResponsable(){
+        return privresponsable.get(this);
+    }
+
     setPadre(valor){
         privpadre.set(this,valor);
+    }
+
+    setId(valor){
+        privid.set(this,valor);
     }
 
     setFechainicio(valor){
@@ -82,19 +104,27 @@ let tarea = (function() {
         privavance.set(this,valor);
     }
 
+    setResponsable(valor){
+        privavance.set(this,valor);
+    }
+
     }
 
     return tarea;
 })();
 
 let responsable = (function() {
-    let nombre = new WeakMap();
-    let rol = new WeakMap();
+    let privnombre = new WeakMap();
+    let privrol = new WeakMap();
+    let privtelefono = new WeakMap();
+    let privdireccion = new WeakMap();
 
     class responsable{
-        constructor(nombre,rol) {
+        constructor(nombre,rol,telefono,direccion) {
             privnombre.set(this, nombre);
             privnrol.set(this, rol);
+            privtelefono.set(this, telefono);
+            privdireccion.set(this, direccion);
         }
         
         //METODOS SETS Y GETS
@@ -107,12 +137,28 @@ let responsable = (function() {
             return privrol.get(this);
         }
 
+        getTelefono(){
+            return privtelefono.get(this);
+        }
+
+        getDireccion(){
+            return privdireccion.get(this);
+        }
+
         setNombre(valor){
             privnombre.set(this,valor);
         }
 
         setRol(valor){
             privrol.set(this,valor);
+        }
+
+        setTelefono(valor){
+            privtelefono.set(this,valor);
+        }
+
+        setDireccion(valor){
+            privdireccion.set(this,valor);
         }
 
     }
@@ -143,10 +189,7 @@ let arregloTareas = (function() {
     let privarreglodeTareas = new Array();
     
     class arregloTareas {
-        constructor(tarea) {
-          let objetoTarea = new WeakMap();
-          objetoTarea.set(this,tarea);
-          privarreglodeTareas.push(objetoTarea);  
+        constructor() {
         }
     getarregloTareas(i){
             return privarreglodeTareas[i].get(this,tarea);
@@ -158,17 +201,19 @@ let arregloTareas = (function() {
         privarreglodeTareas.push(objetoTarea);  
     }
 
+    obtenerNumElementos(){
+        return privarreglodeTareas.length;
+    }
+
     }
     return arregloTareas;
 })();
 
-
-function main(){
-    let unatarea = new tarea('hola','hola','hola','hola','hola','hola');
-    let dostarea = new tarea('hola2','hola2','hola2','hola2','hola2','hola2');
-    let miarreglo = new arregloTareas(unatarea);
-    miarreglo.setarregloTareas(dostarea);
-    
-    console.log(miarreglo.getarregloTareas(0).getNombre());
-    console.log(miarreglo.getarregloTareas(1).getNombre());
+function inicializarTarea(){
+    let nombre = document.getElementById('').value;
+    let id = miarregloTareas.obtenerNumElementos()+1;
+    let fechainicio = document.getElementById('').value;
+    let fechatermino = document.getElementById('').value;
+    let nombretarea = document.getElementById('').value;
+    let nuevatarea = new tarea();
 }
